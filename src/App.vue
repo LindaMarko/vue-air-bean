@@ -10,4 +10,9 @@
 *{
   font-family: 'PT Serif', serif;
 }
+
+#app{
+  max-width: 375px;
+  margin: auto;
+}
 </style>

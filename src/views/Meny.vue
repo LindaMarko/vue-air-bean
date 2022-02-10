@@ -46,16 +46,14 @@ h1{
 
 .meny{
     background-color: #F3E4E1;
-    min-width: 375px;
-    margin-left: 250px;
-    margin-right: 250px;
+    max-width: 375px;
 }
 
 header{
-    height: 100px;
+    height: 113px;
     background-image: url(../assets/graphics/graphics-header.svg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    
 }
 
 .add-icon{
@@ -73,7 +71,7 @@ header{
 }
 
 .lower-part{
-    margin-left: 175px;
+    margin-left: 10%;
 }
 
 .menu-item{
@@ -82,7 +80,7 @@ header{
 }
 
 footer{
-    height: 75px;
+    height: 73px;
     background-image: url(../assets/graphics/graphics-footer.svg);
     background-repeat: no-repeat;
     background-size: 100%;
