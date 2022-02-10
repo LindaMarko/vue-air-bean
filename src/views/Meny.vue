@@ -52,8 +52,7 @@ h1{
 header{
     height: 113px;
     background-image: url(../assets/graphics/graphics-header.svg);
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;   
 }
 
 .add-icon{
@@ -83,7 +82,6 @@ footer{
     height: 73px;
     background-image: url(../assets/graphics/graphics-footer.svg);
     background-repeat: no-repeat;
-    background-size: 100%;
 }
 
 </style>
