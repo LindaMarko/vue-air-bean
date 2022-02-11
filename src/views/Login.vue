@@ -14,9 +14,10 @@
                   <input type="text" name="email" v-model="user.email">
                   
                   <div class="gdpr">
-                      <input type="radio" name="gdpr" id="gdpr">
+                      <input type="checkbox" name="gdpr" id="gdpr" v-model="user.gdpr">
                       <label for="gdpr">GDPR Ok!</label>
                       </div>
+                      <p v-if="!gdprApproved" :style="{color: 'red'}">Please accept GDPR!</p>
                    <input type="submit" value="Brew me a cup!">
                   
               </form>
@@ -32,15 +33,22 @@ export default {
         user:
              {
                 username: "",
-                email: ""
-            }
+                email: "",
+                gdpr: ""
+            },
+            gdprApproved: true
         }
     },
 
 methods: {
     submit(){
-        console.log("test")
+        this.gdprApproved = true;
+        if(this.user.gdpr){
         this.$store.commit('addUser', this.user)
+        }
+        else{
+            this.gdprApproved = false
+        }
     }
 }
 
