@@ -7,11 +7,11 @@
               <img src="../assets/graphics/logo-sml.svg" alt="company logo">
               <h2>Välkommen till AirBean-familjen!</h2>
               <p>Genom att skapa ett konto nedan kan du spara och se din orderhistorik.</p>
-              <form action="">
+              <form @submit.prevent="submit">
                   <label for="namn">Name</label>
-                  <input type="text" name="namn">
+                  <input type="text" name="namn" v-model="user.username">
                   <label for="email">Epost</label>
-                  <input type="text" name="email">
+                  <input type="text" name="email" v-model="user.email">
                   
                   <div class="gdpr">
                       <input type="radio" name="gdpr" id="gdpr">
@@ -27,6 +27,22 @@
 
 <script>
 export default {
+
+    data(){return{
+        user:
+             {
+                username: "",
+                email: ""
+            }
+        }
+    },
+
+methods: {
+    submit(){
+        console.log("test")
+        this.$store.commit('addUser', this.user)
+    }
+}
 
 }
 </script>
