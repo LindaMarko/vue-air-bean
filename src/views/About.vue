@@ -41,6 +41,8 @@ header{
 
 main{
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 p{

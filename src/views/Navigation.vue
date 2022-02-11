@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="nav">
     <img src="../assets/graphics/close.svg" alt="Close this navigation" class="close-icon">
 
     <div class="nav-items">
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 hr{
   width: 48px;
@@ -49,7 +49,7 @@ hr{
   margin: 15px;
 }
 
-nav{
+.nav{
   background-color: #2F2926;
   min-height: 667px;
 }

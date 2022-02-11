@@ -7,6 +7,17 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     menu: [...menu],
+    orders: [
+
+
+      {
+        orderNumber: "",
+        orderDate: "",
+        totalSum: ""
+
+
+      }
+    ]
 
   },
   mutations: {

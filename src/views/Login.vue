@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 img{
     margin-top: 20px;
@@ -47,6 +47,7 @@ input[type=text]{
      background-color: #F3E4E1;
      border-radius: 3px;
      border: 1px solid #2F2926;  
+     min-height: 20px;
 }
 
 label{
@@ -91,8 +92,7 @@ header{
 
 main{
      display: flex;
-     justify-content: center;
-     
+     justify-content: center;  
 }
 
 .center-div{
