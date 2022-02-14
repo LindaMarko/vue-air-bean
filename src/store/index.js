@@ -39,6 +39,14 @@ export default new Vuex.Store({
 
   },
   mutations: {
+
+    addUser(state, user) {
+      state.users.unshift(user)
+    }
+  },
+  actions: {
+  
+
     showCart(state){
       state.cartIsClicked = true
     },
@@ -80,6 +88,7 @@ export default new Vuex.Store({
       const product = products.find((prod) => prod.id === prodId);
       context.commit('addProductToCart', product);
     }
+
   },
   getters: {
     products(state){
