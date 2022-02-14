@@ -42,11 +42,7 @@ export default new Vuex.Store({
 
     addUser(state, user) {
       state.users.unshift(user)
-    }
-  },
-  actions: {
-  
-
+    },
     showCart(state){
       state.cartIsClicked = true
     },
