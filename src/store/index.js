@@ -33,12 +33,12 @@ export default new Vuex.Store({
 
   },
   mutations: {
-
     addUser(state, user) {
       state.users.unshift(user)
     }
   },
   actions: {
+  
   },
   modules: {
   }
