@@ -1,32 +1,40 @@
 <template>
   <nav class="nav">
-    <img src="../assets/graphics/close.svg" alt="Close this navigation" class="close-icon">
+    <img
+      src="../assets/graphics/close.svg"
+      alt="Close this navigation"
+      class="close-icon"
+      @click="goBack"
+    />
 
     <div class="nav-items">
       <router-link class="link" to="/meny">Meny</router-link>
-      <hr>
-    <router-link class="link" to="/our-coffee">Vårt kaffe</router-link>
-    <hr>
-    <router-link class="link" to="/profile">Min profil</router-link>
-    <hr>
-    <router-link class="link" to="/orderstatus">Orderstatus</router-link></div>
-    
+      <hr />
+      <router-link class="link" to="/our-coffee">Vårt kaffe</router-link>
+      <hr />
+      <router-link class="link" to="/profile">Min profil</router-link>
+      <hr />
+      <router-link class="link" to="/orderstatus">Orderstatus</router-link>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
-
-}
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-hr{
+hr {
   width: 48px;
   border: 0.5px solid rgb(122, 122, 122);
 }
-.close-icon{
+.close-icon {
   background-color: white;
   border-radius: 50%;
   padding: 5px;
@@ -34,7 +42,7 @@ hr{
   margin: 10px;
 }
 
-.nav-items{
+.nav-items {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,15 +50,15 @@ hr{
   margin-top: 60px;
 }
 
-.link{
+.link {
   color: white;
   text-decoration: none;
   font-size: 32px;
   margin: 15px;
 }
 
-.nav{
-  background-color: #2F2926;
+.nav {
+  background-color: #2f2926;
   min-height: 667px;
 }
 </style>

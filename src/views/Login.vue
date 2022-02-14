@@ -1,8 +1,12 @@
 <template>
   <div class="login">
-    <header></header>
+    <header>
+      <router-link to="/navigation">
+        <NavIcon />
+      </router-link>
+    </header>
     <main>
-      <div class="center-div">
+      <div class="center">
         <img src="../assets/graphics/logo-sml.svg" alt="company logo" />
         <h2>Välkommen till AirBean-familjen!</h2>
         <p>
@@ -29,7 +33,11 @@
 </template>
 
 <script>
+import NavIcon from "../components/NavIcon.vue";
 export default {
+  components: {
+    NavIcon,
+  },
   data() {
     return {
       user: {
@@ -104,6 +112,7 @@ header {
   height: 113px;
   background-image: url(../assets/graphics/graphics-header.svg);
   background-repeat: no-repeat;
+  padding: 0.8rem;
 }
 
 .login {
@@ -116,7 +125,7 @@ main {
   justify-content: center;
 }
 
-.center-div {
+.center {
   display: flex;
   flex-direction: column;
   align-items: center;
