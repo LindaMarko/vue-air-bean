@@ -1,83 +1,118 @@
 <template>
-<div class="meny">
-      <header></header>
-  <main>
-        <h1>Meny</h1>
-        <div class="menu-item" v-for="menuItem in menu" :key="menuItem.id">
-            <span class="upper-part">
-            <img class="add-icon" src="../assets/graphics/add.svg" alt="" >
-            <h2 class="title">{{menuItem.title}}</h2>
-            <div class="dots"></div>
-            <h2 class="price">{{menuItem.price}}</h2>
-            </span>
-
-            <span class="lower-part">
-                <p>{{menuItem.desc}}</p>
-                </span>            
-        
-        </div>
-  </main>
-  <footer></footer>
-
-</div>
-
+    <div class="meny">
+        <header>
+            <router-link to="/navigation">
+                <NavIcon />
+            </router-link>
+            <div class="cart-icon" @click="isClicked">
+                <img src="../assets/graphics/bag.svg" alt="Cart" >
+                <div v-if="cartQuantity" class="qty">
+                    <p>{{cartQuantity}}</p>
+                </div>
+            </div> 
+        </header>
+        <router-link to="/cart">
+            <Cart v-if="cartIsClicked"/>
+        </router-link>
+        <main>
+            <h1>Meny</h1>
+            <MenyItem 
+            v-for="menuItem in menu" 
+            :key="menuItem.id"
+            :id="menuItem.id"
+            :title="menuItem.title"
+            :price="menuItem.price"
+            :description="menuItem.desc"
+            />     
+        </main>
+        <footer></footer>
+    </div>
 </template>
 
 <script>
+import MenyItem from '../components/MenyItem.vue';
+import Cart from './Cart.vue';
+import NavIcon from '../components/NavIcon.vue';
 export default {
-computed:{
-    menu(){
-        return this.$store.state.menu;
+    components: {
+        MenyItem,
+        Cart,
+        NavIcon
+    },
+    computed:{
+        menu(){
+            return this.$store.getters.products;
+        },
+        cartQuantity() {
+            return this.$store.getters.cartQty;
+        },
+        cartIsClicked() {
+            return this.$store.getters.isCartShown;
+        },
+    },
+    methods: {
+        isClicked() {
+            this.$store.dispatch('showCart')
+        }
     }
-}
 }
 </script>
 
 <style scoped>
-
+.meny{
+    background-color: #F3E4E1;
+    width: 375px;
+}
 h1{
     text-align: center;
 }
-
-.dots{
-    border-bottom: 1px black dotted;
-    width: 20px;
-}
-
-.meny{
-    background-color: #F3E4E1;
-    max-width: 375px;
-}
-
 header{
+    display: flex;
+    justify-content: space-between;
     height: 113px;
     background-image: url(../assets/graphics/graphics-header.svg);
     background-repeat: no-repeat;   
+    padding: .8rem;
 }
-
-.add-icon{
-    background-color: black;
-    border-radius: 50%;
-    height: 18px;
-    padding: 7px;
-    margin-right: 20px;   
+p {
+    margin: 0;
 }
-
-.upper-part{
+.nav-icon {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    padding: .8rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
-
-.lower-part{
-    margin-left: 10%;
-}
-
-.menu-item{
+.cart-icon {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: #2F2926;
+    padding: .8rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
-
+.qty {
+    width: 8px;
+    height: 8px;
+  padding: .4rem;
+  background-color: #E5674E;
+  color: #fff;
+  margin-top: -2.5rem;
+  margin-right: -1.3rem;
+  border-radius: 50%;
+}
+.qty p {
+    font-size: .8rem;
+    margin-top: -.3rem;
+}
 footer{
     height: 73px;
     background-image: url(../assets/graphics/graphics-footer.svg);
