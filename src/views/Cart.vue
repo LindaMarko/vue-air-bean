@@ -1,54 +1,25 @@
 <template>
 <div class="cart">
   <dialog open>
+    <router-link to="/meny" class="close-icon" @click="closeCart">
+      <img 
+      src="../assets/graphics/close.svg" 
+      alt="Close this navigation"
+      @click="closeCart" >
+    </router-link>
     <h1>Din beställning</h1>
-    <div class="menu-item">
-      <span class="upper-part">
-        <h2 class="title">Bryggkaffe</h2>
-        <div class="dots"></div>
-        <div class="quantity">
-          <img src="../assets/graphics/arrow-up.svg" alt="Arrow up">
-          <p><strong>2</strong></p>
-          <img src="../assets/graphics/arrow-down.svg" alt="Arrow down">
-        </div>
-      </span>
-      <span class="lower-part">
-        <p>98 kr</p>
-      </span> 
-    </div>
-    <div class="menu-item">
-      <span class="upper-part">
-        <h2 class="title">Caffe Doppio</h2>
-        <div class="dots"></div>
-        <div class="quantity">
-          <img src="../assets/graphics/arrow-up.svg" alt="Arrow up">
-          <p><strong>1</strong></p>
-          <img src="../assets/graphics/arrow-down.svg" alt="Arrow down">
-        </div>
-      </span>
-      <span class="lower-part">
-        <p>49 kr</p>
-      </span> 
-    </div>
-    <div class="menu-item">
-      <span class="upper-part">
-        <h2 class="title">Cappuccino</h2>
-        <div class="dots"></div>
-        <div class="quantity">
-          <img src="../assets/graphics/arrow-up.svg" alt="Arrow up">
-          <p><strong>3</strong></p>
-          <img src="../assets/graphics/arrow-down.svg" alt="Arrow down">
-        </div>
-      </span>
-      <span class="lower-part">
-        <p>196 kr</p>
-      </span> 
-    </div>
+    <CartItem
+      v-for="item in cartItems"
+      :key="item.productId"
+      :id="item.productId"
+      :title="item.title"
+      :quantity="item.qty"
+      :price="item.price"/>
     <div class="total">
       <span class="upper-part">
         <h2 class="title">Total</h2>
         <div class="dots"></div>
-        <p>874 kr</p>
+        <p>{{cartTotal}}kr</p>
       </span>
       <span class="lower-part">
         <p>inkl moms + drönarleverans</p>
@@ -60,25 +31,52 @@
 </template>
 
 <script>
-
+import CartItem from '../components/CartItem.vue';
 export default {
-  
+  components: {CartItem},
+  computed: {
+    cartItems() {
+        return this.$store.getters.cartItems
+    },
+    cartTotal() {
+      return this.$store.getters.cartTotal
+    },
+    cartIsClicked() {
+      return this.$store.getters.isCartShown;
+    },
+  },
+  methods: {
+    closeCart() {
+      this.$store.dispatch('closeCart')
+    }
+  },
 
 }
 </script>
 
 <style scoped>
 dialog {
-  width: 341px;
+  display: flex;
+  flex-direction: column;
+  width: 310px;
   background: #FFFFFF;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   border: none;
   padding: 1rem;
-  
+}
+.close-icon {
+  align-self: flex-end;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  padding: .8rem;
+  border-radius: 50%;
+  cursor: pointer;
 }
 h1 {
   text-align: center;
+  margin-top: 0;
 }
 h2 {
   font-size: 1.3rem;
