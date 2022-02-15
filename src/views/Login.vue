@@ -53,7 +53,7 @@ export default {
     submit() {
       this.gdprApproved = true;
       if (this.user.gdpr) {
-        this.$store.commit("addUser", this.user);
+        this.$store.commit("addUser", { ...this.user });
       } else {
         this.gdprApproved = false;
       }
