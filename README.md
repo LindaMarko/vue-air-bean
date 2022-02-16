@@ -1,24 +1,6 @@
-# air-bean
+# Air bean Coffee Shop
 
-## Project setup
-```
-npm install
-```
+### Coffee delivered by drones.  
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<img src="/src/assets/poster.png" width="800" height="400">
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
