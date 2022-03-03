@@ -2,5 +2,5 @@
 
 ### Coffee delivered by drones.  
 
-<img src="/src/assets/poster.png" width="800" height="400">
+<img src="/src/assets/poster.png">
 
